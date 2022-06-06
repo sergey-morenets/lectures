@@ -2,8 +2,10 @@ package java8;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.Integer.MAX_VALUE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomGeneratorTest {
@@ -41,12 +43,10 @@ public class RandomGeneratorTest {
                 () -> randomGenerator.generate(-5));
     }
 
-//    @Test
-//    void shouldReturnNumbersSmallerThanMaxValue(){
-//        for (int i =0; i<1000000; i++) {
-//            assertTrue(randomGenerator.generate(MAX_VALUE) < MAX_VALUE);
-//        }
-//    }
+    @RepeatedTest(1_000_000)
+    void shouldReturnNumbersSmallerThanMaxValue() {
+        assertTrue(randomGenerator.generate(MAX_VALUE) < MAX_VALUE);
+    }
 
 //    @Test
 //    @DisplayName("Check if number is random")
