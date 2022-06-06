@@ -6,7 +6,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringJUnitConfig
+@SpringJUnitConfig(classes = CapgeminiConfiguration.class)
 class ProductAPITest {
 
     @Autowired
