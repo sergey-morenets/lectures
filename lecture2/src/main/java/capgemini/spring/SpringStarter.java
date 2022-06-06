@@ -5,11 +5,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringStarter {
 
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("capgemini")) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CapgeminiConfiguration.class)) {
 
             Writer writer = context.getBean("dbWriter", Writer.class);
 
             ProductAPI productAPI = context.getBean(ProductAPI.class);
+
+            System.out.println(context.getBean(String.class));
 
 
 //        Writer writer = new DbWriter();
