@@ -7,5 +7,7 @@ public class SpringStarter {
         ProductAPI productAPI = new ProductAPI();
         productAPI.setWriter(writer);
         Product product = productAPI.findProduct(1);
+
+        OrderAPI orderAPI = new OrderAPI();
     }
 }
