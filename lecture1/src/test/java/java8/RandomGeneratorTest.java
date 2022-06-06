@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static java.lang.Integer.MAX_VALUE;
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,13 +50,14 @@ public class RandomGeneratorTest {
         assertTrue(randomGenerator.generate(MAX_VALUE) < MAX_VALUE);
     }
 
-//    @Test
-//    @DisplayName("Check if number is random")
-//    void generate_IfTwoNumbersAreNotTheSame(){
-//        int numberOne = randomGenerator.generate(1000);
-//        int numberTwo = randomGenerator.generate(1000);
-//        assertNotEquals(numberOne, numberTwo);
-//    }
+    @Test
+    @DisplayName("Check if number is random")
+    void generate_IfTwoNumbersAreNotTheSame() {
+        final int max = 1000;
+        int numberOne = randomGenerator.generate(max);
+        int numberTwo = randomGenerator.generate(max);
+        assertNotEquals(numberOne, numberTwo);
+    }
 
 
 //    private Map<Integer, Integer> numberCounts;
@@ -94,29 +97,38 @@ public class RandomGeneratorTest {
 //        }
 //    }
 
-//    @Test
-//    @DisplayName("Test that IllegalArgumentException is thrown when negative number is passed as max")
-//    void generator_negativeNumber_resultIsIllegalArgumentException() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomGenerator.generate(-2);
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("Test that IllegalArgumentException is thrown when large negative number is passed as max")
-//    void generator_largeNegativeNumber_resultIsIllegalArgumentException() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomGenerator.generate(Integer.MIN_VALUE);
-//        });
-//    }
-//
-//    @Test
-//    @DisplayName("Test that IllegalArgumentException is thrown when zero is passed as max")
-//    void generator_zero_resultIsIllegalArgumentException() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomGenerator.generate(0);
-//        });
-//    }
+    @ParameterizedTest
+    @ValueSource(ints = {-2, Integer.MIN_VALUE, 0})
+    @DisplayName("Test that IllegalArgumentException is thrown when invalid number is passed as max")
+    void generate_invalidUpperBound_exceptionThrown(int upperBound) {
+        assertThrows(IllegalArgumentException.class, () -> {
+            randomGenerator.generate(upperBound);
+        });
+    }
+
+    @Test
+    @DisplayName("Test that IllegalArgumentException is thrown when negative number is passed as max")
+    void generator_negativeNumber_resultIsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            randomGenerator.generate(-2);
+        });
+    }
+
+    @Test
+    @DisplayName("Test that IllegalArgumentException is thrown when large negative number is passed as max")
+    void generator_largeNegativeNumber_resultIsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            randomGenerator.generate(Integer.MIN_VALUE);
+        });
+    }
+
+    @Test
+    @DisplayName("Test that IllegalArgumentException is thrown when zero is passed as max")
+    void generator_zero_resultIsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            randomGenerator.generate(0);
+        });
+    }
 //
 //    @Test
 //    @DisplayName("Test that generator returns integer value")
