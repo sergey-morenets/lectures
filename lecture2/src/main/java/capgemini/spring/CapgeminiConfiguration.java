@@ -1,10 +1,11 @@
 package capgemini.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
+//@ComponentScan("capgemini.spring")
 public class CapgeminiConfiguration {
 
     @Bean
@@ -13,6 +14,7 @@ public class CapgeminiConfiguration {
     }
 
     @Bean
+    @Primary
     public Writer dbWriter() {
         return new DbWriter();
     }
@@ -22,11 +24,11 @@ public class CapgeminiConfiguration {
         return new ConsoleWriter();
     }
 
-    @Autowired
-    private Writer writer;
+//    @Autowired
+//    private Writer writer;
 
     @Bean
-    public ProductAPI productAPI() {
+    public ProductAPI productAPI(Writer writer) {
         return new ProductAPI(writer);
     }
 }
