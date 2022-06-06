@@ -1,6 +1,10 @@
 package java8;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RandomGeneratorTest {
 
@@ -13,12 +17,15 @@ public class RandomGeneratorTest {
 
     }
 
-//    @Test
-//    void generatedNumberShouldBeSmallerThanMax() {
-//        int max = 50;
-//        int result = randomGenerator.generate(max);
-//        assertTrue(result < max);
-//    }
+    @Test
+    @DisplayName("Check that generated random value is less than upper bound")
+        //Given-when-then
+    void generate_invokeWithValidBound_resultIsLess() {
+        //void generatedNumberShouldBeSmallerThanMax() {
+        int max = 50;
+        int result = randomGenerator.generate(max);
+        assertTrue(result < max);
+    }
 
 //    @DisplayName("Test that checks if returned type is an int")
 //    @Test
