@@ -85,4 +85,34 @@ public class RandomGeneratorTest {
 //
 //        }
 //    }
+
+//    @Test
+//    @DisplayName("Test that IllegalArgumentException is thrown when negative number is passed as max")
+//    void generator_negativeNumber_resultIsIllegalArgumentException() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            randomGenerator.generate(-2);
+//        });
+//    }
+//
+//    @Test
+//    @DisplayName("Test that IllegalArgumentException is thrown when large negative number is passed as max")
+//    void generator_largeNegativeNumber_resultIsIllegalArgumentException() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            randomGenerator.generate(Integer.MIN_VALUE);
+//        });
+//    }
+//
+//    @Test
+//    @DisplayName("Test that IllegalArgumentException is thrown when zero is passed as max")
+//    void generator_zero_resultIsIllegalArgumentException() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            randomGenerator.generate(0);
+//        });
+//    }
+//
+//    @Test
+//    @DisplayName("Test that generator returns integer value")
+//    void generator_resultIsInteger() {
+//        assertTrue(Integer.class.isInstance(randomGenerator.generate(100)));
+//    }
 }
