@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomGeneratorTest {
 
@@ -27,18 +27,19 @@ public class RandomGeneratorTest {
         assertTrue(result < max);
     }
 
-//    @DisplayName("Test that checks if returned type is an int")
-//    @Test
-//    void returnsInt(){
-//        int ans = randomGenerator.generate(1); //always returns 0
-//        assertTrue(0 == (int)ans); // checking if returned type is an int
-//    }
+    @DisplayName("Test that checks if returned type is an int")
+    @Test
+    void returnsInt() {
+        int ans = randomGenerator.generate(1); //always returns 0
+        assertEquals(0, ans); // checking if returned type is an int
+    }
 
-//    @Test
-//    public void testIllegalArgumentException() {
-//
-//        Assertions.assertThrows(IllegalArgumentException.class, () -> ranGen.generate(-5));
-//    }
+    @Test
+    public void testIllegalArgumentException() {
+
+        assertThrows(IllegalArgumentException.class,
+                () -> randomGenerator.generate(-5));
+    }
 
 //    @Test
 //    void shouldReturnNumbersSmallerThanMaxValue(){
