@@ -1,8 +1,12 @@
 package capgemini.spring;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("dbWriter")
+@Primary
+@Qualifier("db")
 public class DbWriter implements Writer {
 
 //    private static final DbWriter INSTANCE = new DbWriter();

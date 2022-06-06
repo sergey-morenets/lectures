@@ -1,6 +1,7 @@
 package capgemini.spring;
 
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,7 @@ public class ProductAPI {
     private final Writer writer;
 
     //@Autowired
-    public ProductAPI(Writer writer) {
+    public ProductAPI(@Qualifier("console") Writer writer) {
         this.writer = writer;
     }
 
