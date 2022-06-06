@@ -4,6 +4,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
 @Setter
 public class ProductAPI {
@@ -25,4 +28,14 @@ public class ProductAPI {
 //    public void setWriter(Writer writer) {
 //        this.writer = writer;
 //    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Current writer is " + writer.getClass().getSimpleName());
+    }
+
+    @PreDestroy
+    public void shutdown() {
+        System.out.println("ProductAPI bean is being destroyed ....");
+    }
 }
