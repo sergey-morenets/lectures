@@ -136,4 +136,60 @@ public class RandomGeneratorTest {
     void generator_resultIsInteger() {
         assertTrue(Integer.class.isInstance(randomGenerator.generate(100)));
     }
+
+    @Test
+    @DisplayName("Test that values returned by generator are random (distributed uniformly)")
+    void generator_uniformDistributionTest() {
+        //I am using "Chi-Squared" statistical hypothesis test
+        //It allows me to check, if generated numbers are spread out reasonably
+        //For example, when generating  1000 random numbers which values would be in range [0, 100) we would expect to
+        //get somewhere around 1000/100 numbers of each value
+        //numberOfRands should be at least greater than 10*maxValue
+        int maxValue = 50000; //Generating random values in range [0, maxValue)
+        int numberOfRands = 999999; //Number of rands generated
+        double f = 0;
+
+        int[] frequencies = new int[maxValue]; //How many times each value from [0, maxValue) was drawn
+
+        for (int i = 0; i < numberOfRands; i++) {
+            frequencies[randomGenerator.generate(maxValue)]++;
+        }
+
+        for (int i = 0; i < maxValue; i++) {
+            f += Math.pow(frequencies[i] - ((double) numberOfRands / maxValue), 2); //Calculations due to "Chi-Squared" formula
+        }
+
+        assertTrue(Math.abs((f * maxValue / numberOfRands) - maxValue) <= 2 * Math.sqrt(maxValue));
+    }
+
+    @RepeatedTest(1_000)
+    @DisplayName("Test if amount of generated numbers for each int is within expected bonds")
+    void testRandomness() {
+        Map<Integer, Integer> numberCount = new HashMap<>();
+
+        //given
+        int cases = 10000;
+        int highestNumber = 10;
+        double deviation = 0.05;
+        double maxExpectedResults = (cases / highestNumber) + (cases * deviation);
+        double minExpectedResults = (cases / highestNumber) - (cases * deviation);
+
+        for (int i = 0; i < highestNumber; i++) {
+            numberCount.put(i, 0);
+        }
+
+        //when
+        for (int i = 0; i < cases; i++) {
+            int generatedInt = randomGenerator.generate(highestNumber);
+            numberCount.put(generatedInt, numberCount.get(generatedInt) + 1);
+            //numberCount.compute(generatedInt, (key, value) -> value == null ? 1: value + 1);
+        }
+
+        //then
+        for (int i = 0; i < highestNumber; i++) {
+            assertTrue(numberCount.get(i) <= maxExpectedResults);
+            assertTrue(numberCount.get(i) >= minExpectedResults);
+        }
+
+    }
 }
