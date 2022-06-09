@@ -1,2 +1,5 @@
 server:
   port: 8500
+app:
+  login: admin
+  password: admin
