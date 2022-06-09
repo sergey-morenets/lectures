@@ -3,13 +3,21 @@ package capgemini.spring.boot;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Getter
 @Setter
+/***
+ *
+ */
 public class Order {
 
-    private int id;
+    private Integer id;
 
     private String name;
+
+    private List<Attribute> attributes;
 //
 //    public int getId() {
 //        return id;
@@ -29,7 +37,16 @@ public class Order {
 
     public static void main(String[] args) {
         Order order = new Order();
-        order.setId(1);
         order.setName("ID1");
+        order.setAttributes(new LinkedList<>());
+        System.out.println(order.getId() == 0);
     }
+}
+
+@Getter
+@Setter
+class Attribute {
+    private int id;
+
+    private String name;
 }
