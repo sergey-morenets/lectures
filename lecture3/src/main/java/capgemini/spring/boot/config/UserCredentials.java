@@ -3,7 +3,7 @@ package capgemini.spring.boot.config;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
 
@@ -11,10 +11,16 @@ import javax.annotation.PostConstruct;
 @Setter
 @Slf4j
 public class UserCredentials {
-    @Value("${app.login}")
+
+    public UserCredentials(Environment env) {
+        login = env.getProperty("app.login");
+        password = env.getProperty("app.password");
+    }
+
+    //@Value("${app.login:admin}")
     private String login;
 
-    @Value("${app.password}")
+    //@Value("${app.password}")
     private String password;
 
     @PostConstruct
