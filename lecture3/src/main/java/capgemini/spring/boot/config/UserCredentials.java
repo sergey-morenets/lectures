@@ -13,8 +13,9 @@ import javax.annotation.PostConstruct;
 public class UserCredentials {
 
     public UserCredentials(Environment env) {
-        login = env.getProperty("app.login");
-        password = env.getProperty("app.password");
+        // login = env.getProperty("app.username", "admin");
+        login = env.getRequiredProperty("app.login");
+        password = env.getRequiredProperty("app.password");
     }
 
     //@Value("${app.login:admin}")
