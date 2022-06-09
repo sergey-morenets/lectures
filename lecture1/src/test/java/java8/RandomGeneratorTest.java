@@ -13,6 +13,11 @@ import java.util.Map;
 import static java.lang.Integer.MAX_VALUE;
 import static org.junit.jupiter.api.Assertions.*;
 
+// max - 3
+// iterations - 600/3 = 200
+// 0 196 = 4  500 200
+// 1 206 = 6  50  200
+// 2 198 = 2  50  200
 public class RandomGeneratorTest {
 
     RandomGenerator randomGenerator;
