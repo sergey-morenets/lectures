@@ -1,4 +1,4 @@
-package capgemini.spring.boot;
+package capgemini.spring.boot.model;
 
 import lombok.Getter;
 import lombok.Setter;
