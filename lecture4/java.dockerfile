@@ -10,4 +10,5 @@ WORKDIR /opt
 
 RUN javac HelloWorld.java
 
+#CMD java -jar project.jar
 CMD java HelloWorld
