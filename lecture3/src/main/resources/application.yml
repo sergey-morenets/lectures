@@ -3,3 +3,6 @@ server:
 app:
   login: admin
   password: admin
+  finance:
+    discount-percentage:
+      max: 30
