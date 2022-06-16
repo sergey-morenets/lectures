@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +21,7 @@ public class Product {
 
     @Column(name = "PRICE", nullable = false)
     private double price;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }
