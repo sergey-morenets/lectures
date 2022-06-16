@@ -34,6 +34,18 @@ public class Order {
     private int createdBy;
 
     private LocalDateTime lastModifiedAt;
+
+    public void create() {
+    }
+
+    public void complete() {
+    }
+
+    public void pay() {
+    }
+
+    public void delivery() {
+    }
 //
 //    public int getId() {
 //        return id;
