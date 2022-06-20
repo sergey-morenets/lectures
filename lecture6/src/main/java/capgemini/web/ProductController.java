@@ -6,6 +6,7 @@ import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -31,7 +32,7 @@ public class ProductController {
         return LocalDateTime.now();
     }
 
-    @GetMapping("products")
+    @GetMapping(value = "products", produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<ProductDTO> findAll(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam("price") Double price) {
