@@ -1,14 +1,24 @@
 package capgemini.web;
 
-import capgemini.model.Product;
+import capgemini.dto.ProductDTO;
+import capgemini.service.ProductService;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ProductController {
+
+    private final Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("")
     public String helloWorld() {
@@ -22,23 +32,28 @@ public class ProductController {
     }
 
     @GetMapping("products")
-    public List<Product> findAll() {
-        return List.of(new Product());
+    public List<ProductDTO> findAll(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam("price") Double price) {
+        //ProductDTO productDTO = new ProductDTO();
+        //copy all the fields from product to productDTO
+        return productService.search(name, price).stream().map(product -> mapper.map(product, ProductDTO.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("products/{id}") //GET products/1
-    public Product findOne(@PathVariable int id) {
-        return new Product();
+    public ProductDTO findOne(@PathVariable int id) {
+        return new ProductDTO();
     }
 
     @PostMapping(value = "products")
-    public void create(@RequestBody Product product) {
+    public void create(@RequestBody ProductDTO product) {
         // Save product
         System.out.println(product);
     }
 
     @PutMapping(value = "products/{id}")
-    public void update(@PathVariable int id, @RequestBody Product product) {
+    public void update(@PathVariable int id, @RequestBody ProductDTO product) {
         // Save product
         System.out.println(product);
     }
