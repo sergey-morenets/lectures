@@ -20,4 +20,11 @@ public class ProductService {
     public List<Product> findAll() {
         return productRepository.findAll();
     }
+
+    //Git issue
+    //Add run method and counter field to the Starter class, add start method and items and elements fields to the SuperStarter class
+    //low-level description
+    //run -> execute
+    //high level: Extract common fields into base entity class
+    //low-level: Create BaseEntity abstract class and move createdAt, lastModifiedAt, id from Order, Product, Category, User classes into BaseEntity
 }

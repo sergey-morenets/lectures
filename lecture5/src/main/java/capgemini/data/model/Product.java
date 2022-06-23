@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "PRODUCTS")
-public class Product {
+public class Product extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "PRODUCT_ID")
@@ -24,7 +24,7 @@ public class Product {
     private Double price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<BaseEntity> orders;
 
     public void addOrder(Order order) {
         if (orders == null) {
