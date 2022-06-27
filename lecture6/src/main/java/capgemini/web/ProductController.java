@@ -1,14 +1,12 @@
 package capgemini.web;
 
 import capgemini.dto.ProductDTO;
-import capgemini.exception.IllegalParameterException;
 import capgemini.service.ProductService;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -45,12 +43,8 @@ public class ProductController {
     }
 
     @GetMapping("products/{id}") //GET products/1
-    public ResponseEntity<ProductDTO> findOne(@PathVariable int id) {
-        try {
-            return ResponseEntity.ok(mapper.map(productService.findById(id), ProductDTO.class));
-        } catch (IllegalParameterException ex) {
-            return ResponseEntity.notFound().build();
-        }
+    public ProductDTO findOne(@PathVariable int id) {
+        return mapper.map(productService.findById(id), ProductDTO.class);
     }
 
     @PostMapping(value = "products")
