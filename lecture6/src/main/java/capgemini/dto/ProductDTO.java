@@ -13,4 +13,22 @@ public class ProductDTO {
     private String name;
 
     private Double price;
+
+    //private CategoryDTO category;
+    private int categoryId;
+
+    public static void main(String[] args) {
+        ProductDTO product = new ProductDTO();
+        product.setId(1);
+        product.setName("Car");
+        product.setPrice(100d);
+        product.setCategoryId(10);
+//        CategoryDTO category = new CategoryDTO();
+//        product.setCategory(category);
+//        product.getCategory().setId(0);
+//        product.getCategory().setName("Cars");
+        //should we enter category name?
+        //should we enter category products?
+
+    }
 }
