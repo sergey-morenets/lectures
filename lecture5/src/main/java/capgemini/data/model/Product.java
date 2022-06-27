@@ -10,7 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "PRODUCTS", indexes = {
+        @Index(name = "indProducts_name_price", columnList = "name,price")})
 public class Product extends BaseEntity {
     @Id
     @GeneratedValue
