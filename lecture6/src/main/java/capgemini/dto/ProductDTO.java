@@ -15,6 +15,7 @@ public class ProductDTO {
     private Double price;
 
     //private CategoryDTO category;
+    @Mapping("category.id")
     private int categoryId;
 
     public static void main(String[] args) {
