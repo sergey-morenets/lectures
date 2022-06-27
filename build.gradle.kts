@@ -18,8 +18,8 @@ subprojects {
     java.targetCompatibility = JavaVersion.VERSION_18
 
     dependencies {
-        compileOnly("org.projectlombok:lombok:1.18.22")
-        annotationProcessor("org.projectlombok:lombok:1.18.22")
+        compileOnly("org.projectlombok:lombok:1.18.24")
+        annotationProcessor("org.projectlombok:lombok:1.18.24")
         testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
 
     }
