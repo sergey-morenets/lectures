@@ -50,5 +50,6 @@
         <module>lecture6</module>
         <module>lecture7</module>
         <module>lecture8</module>
+        <module>lecture9</module>
     </modules>
 </project>
