@@ -25,7 +25,7 @@ public class StudentController {
 //        mobileService.sendSms(studentDTO.getPhone(), "Congratulations");
     }
 
-    @GetMapping("{/studentId}")
+    @GetMapping("/{studentId}")
     public StudentDTO findById(@PathVariable int studentId) {
         return new StudentDTO();
     }
