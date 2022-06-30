@@ -19,4 +19,8 @@ public class Student {
     private int birthYear;
 
     private Group group;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime lastModifiedAt;
 }

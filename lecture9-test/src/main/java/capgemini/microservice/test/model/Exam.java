@@ -18,4 +18,8 @@ public class Exam {
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime lastModifiedAt;
 }

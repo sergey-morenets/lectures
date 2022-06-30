@@ -17,6 +17,7 @@ public class CourseController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
     public void create(@Valid @RequestBody CourseDTO courseDTO) {
 
     }

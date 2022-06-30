@@ -53,5 +53,7 @@
         <module>lecture9</module>
         <module>lecture9-test</module>
         <module>lecture9-student</module>
+        <module>lecture9-common</module>
+        <module>lecture9-notification</module>
     </modules>
 </project>
