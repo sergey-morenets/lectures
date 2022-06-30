@@ -4,6 +4,7 @@ import capgemini.monolith.dto.CourseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class CourseController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody CourseDTO courseDTO) {
+    public void create(@Valid @RequestBody CourseDTO courseDTO) {
 
     }
 
