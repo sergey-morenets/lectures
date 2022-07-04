@@ -57,5 +57,6 @@
         <module>lecture9-notification</module>
         <module>lecture9-student-client</module>
         <module>lecture10</module>
+        <module>lecture10/lecture10-eureka</module>
     </modules>
 </project>
