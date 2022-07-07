@@ -1,0 +1,12 @@
+resilience4j.retry:
+  instances:
+    productService:
+      maxAttempts: 3
+      waitDuration: 10s
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      retryExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.io.IOException
+      ignoreExceptions:
+        - io.github.robwin.exception.BusinessException

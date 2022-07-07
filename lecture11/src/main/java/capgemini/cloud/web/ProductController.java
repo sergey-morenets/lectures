@@ -2,21 +2,13 @@ package capgemini.cloud.web;
 
 import capgemini.cloud.ProductService;
 import capgemini.cloud.model.Product;
-import io.github.resilience4j.decorators.Decorators;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryConfig;
-import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Supplier;
 
 @RestController
 @RequestMapping("products")
@@ -32,23 +24,25 @@ public class ProductController {
 
     @GetMapping("{id}")
     //@Cacheable(cacheNames = "products")
+    @io.github.resilience4j.retry.annotation.Retry(name = "productService", fallbackMethod = "getProductFromCache")
     public Product findById(@PathVariable("id") int productId) {
-        RetryConfig config = RetryConfig.custom()
-                .maxAttempts(2)
-                .waitDuration(Duration.ofMillis(1000))
-                .retryExceptions(IOException.class, TimeoutException.class)
-                .ignoreExceptions(NullPointerException.class)
-                .failAfterMaxAttempts(true)
-                .build();
-        Retry retry = Retry.of("productService", config);
-
-        Supplier<Product> supplier = () -> productService.findById(productId);
-
-        Supplier<Product> decoratedSupplier = Decorators.ofSupplier(supplier)
-                .withRetry(retry)
-                .decorate();
-        return Try.ofSupplier(decoratedSupplier)
-                .recover(ex -> getProductFromCache(productId)).get();
+        return productService.findById(productId);
+//        RetryConfig config = RetryConfig.custom()
+//                .maxAttempts(2)
+//                .waitDuration(Duration.ofMillis(1000))
+//                .retryExceptions(IOException.class, TimeoutException.class)
+//                .ignoreExceptions(NullPointerException.class)
+//                .failAfterMaxAttempts(true)
+//                .build();
+//        Retry retry = Retry.of("productService", config);
+//
+//        Supplier<Product> supplier = () -> productService.findById(productId);
+//
+//        Supplier<Product> decoratedSupplier = Decorators.ofSupplier(supplier)
+//                .withRetry(retry)
+//                .decorate();
+//        return Try.ofSupplier(decoratedSupplier)
+//                .recover(ex -> getProductFromCache(productId)).get();
 //        int attempts = 0;
 //
 //        Exception lastException = null;
