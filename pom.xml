@@ -59,5 +59,6 @@
         <module>lecture10</module>
         <module>lecture10/lecture10-eureka</module>
         <module>lecture10/lecture10-client</module>
+        <module>lecture11</module>
     </modules>
 </project>
