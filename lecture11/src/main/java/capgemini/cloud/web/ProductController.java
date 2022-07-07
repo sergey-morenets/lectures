@@ -1,7 +1,8 @@
 package capgemini.cloud.web;
 
+import capgemini.cloud.ProductService;
 import capgemini.cloud.model.Product;
-import org.springframework.cache.annotation.Cacheable;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("products")
+@RequiredArgsConstructor
 public class ProductController {
+
+    private final ProductService productService;
 
     @GetMapping
     public List<Product> findAll() {
@@ -19,8 +23,23 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    @Cacheable(cacheNames = "products")
+    //@Cacheable(cacheNames = "products")
     public Product findById(@PathVariable("id") int productId) {
-        return new Product();
+        int attempts = 0;
+
+        Exception lastException = null;
+        while (attempts <= 3) {
+            try {
+                return productService.findById(productId);
+            } catch (Exception ex) {
+                attempts++;
+                lastException = ex;
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
+            }
+        }
+        throw new RuntimeException(lastException);
     }
 }
