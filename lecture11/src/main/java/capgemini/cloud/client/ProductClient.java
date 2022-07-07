@@ -1,5 +1,6 @@
 package capgemini.cloud.client;
 
+import capgemini.cloud.config.FeignConfiguration;
 import capgemini.cloud.model.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //@FeignClient(url = "http://product:8090/products")
-@FeignClient("product")
+@FeignClient(name = "product", configuration = FeignConfiguration.class)
 public interface ProductClient {
 
     @GetMapping

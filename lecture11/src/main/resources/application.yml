@@ -21,3 +21,13 @@ resilience4j.circuitbreaker:
       permittedNumberOfCallsInHalfOpenState: 3
       slidingWindowType: TIME_BASED
       recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+      product:
+        connectTimeout: 5000
+        readTimeout: 5000
