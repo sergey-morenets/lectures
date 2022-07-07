@@ -3,6 +3,8 @@ package capgemini.cloud.web;
 import capgemini.cloud.ProductService;
 import capgemini.cloud.model.Product;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +15,12 @@ import java.util.List;
 @RestController
 @RequestMapping("products")
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController {
 
     private final ProductService productService;
+
+    private final CircuitBreakerFactory factory;
 
     @GetMapping
     public List<Product> findAll() {
@@ -24,9 +29,10 @@ public class ProductController {
 
     @GetMapping("{id}")
     //@Cacheable(cacheNames = "products")
-    @io.github.resilience4j.retry.annotation.Retry(name = "productService", fallbackMethod = "getProductFromCache")
+    //@io.github.resilience4j.retry.annotation.Retry(name = "productService", fallbackMethod = "getProductFromCache")
     public Product findById(@PathVariable("id") int productId) {
-        return productService.findById(productId);
+        return factory.create("productService").run(() -> productService.findById(productId),
+                ex -> getProductFromCache(productId));
 //        RetryConfig config = RetryConfig.custom()
 //                .maxAttempts(2)
 //                .waitDuration(Duration.ofMillis(1000))

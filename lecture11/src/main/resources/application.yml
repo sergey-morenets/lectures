@@ -1,12 +1,23 @@
-resilience4j.retry:
+#resilience4j.retry:
+#  instances:
+#    productService:
+#      maxAttempts: 3
+#      waitDuration: 10s
+#      enableExponentialBackoff: true
+#      exponentialBackoffMultiplier: 2
+#      retryExceptions:
+#        - org.springframework.web.client.HttpServerErrorException
+#        - java.io.IOException
+#      ignoreExceptions:
+#        - io.github.robwin.exception.BusinessException
+resilience4j.circuitbreaker:
   instances:
     productService:
-      maxAttempts: 3
-      waitDuration: 10s
-      enableExponentialBackoff: true
-      exponentialBackoffMultiplier: 2
-      retryExceptions:
-        - org.springframework.web.client.HttpServerErrorException
-        - java.io.IOException
-      ignoreExceptions:
-        - io.github.robwin.exception.BusinessException
+      registerHealthIndicator: true
+      slidingWindowSize: 100
+    orderService:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
