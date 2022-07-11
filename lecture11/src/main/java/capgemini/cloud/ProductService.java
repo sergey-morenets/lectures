@@ -2,6 +2,7 @@ package capgemini.cloud;
 
 import capgemini.cloud.client.ProductClient;
 import capgemini.cloud.model.Product;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,17 @@ public class ProductService {
     private final ProductClient productClient;
 
     public Product findById(int id) {
-        int idx = random.nextInt(3);
-        if (idx % 3 == 0) {
-            throw new RuntimeException("Error!");
+        try {
+            return productClient.findById(1);
+        } catch (FeignException ex) {
+            //status code 4xx
+            //status code 5xx
+            throw ex;
         }
-        return new Product();
+//        int idx = random.nextInt(3);
+//        if (idx % 3 == 0) {
+//            throw new RuntimeException("Error!");
+//        }
+//        return new Product();
     }
 }
