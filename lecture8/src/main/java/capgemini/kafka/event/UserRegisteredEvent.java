@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class UserRegisteredEvent {
+public class UserRegisteredEvent implements IntegrationEvent {
 
     private int userId;
 

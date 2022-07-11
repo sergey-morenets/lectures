@@ -1,5 +1,7 @@
 package capgemini.kafka;
 
+import capgemini.kafka.event.IntegrationEvent;
+import capgemini.kafka.event.UserDeletedEvent;
 import capgemini.kafka.event.UserRegisteredEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,7 +18,7 @@ public class UserService {
 
     private final Queue<String> queue = new LinkedBlockingQueue<>();
 
-    private final KafkaTemplate<Integer, UserRegisteredEvent> kafkaTemplate;
+    private final KafkaTemplate<Integer, IntegrationEvent> kafkaTemplate;
 
     public void register(User user) {
 
@@ -26,5 +28,9 @@ public class UserService {
         //queue.add("User registered: " + user.getEmail());
         //emailService.sendEmail(user.getEmail(), "Mail service", "Successful registration", "");
 
+    }
+
+    public void delete(User user) {
+        kafkaTemplate.send("users", user.getId(), new UserDeletedEvent(user.getId()));
     }
 }
