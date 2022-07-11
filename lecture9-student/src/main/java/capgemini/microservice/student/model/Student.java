@@ -23,4 +23,8 @@ public class Student {
     private LocalDateTime createdAt;
 
     private LocalDateTime lastModifiedAt;
+
+    private boolean enabled;
+
+    private Country country;
 }
