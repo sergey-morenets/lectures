@@ -61,5 +61,6 @@
         <module>lecture10/lecture10-client</module>
         <module>lecture11</module>
         <module>lecture11-client</module>
+        <module>lecture12</module>
     </modules>
 </project>

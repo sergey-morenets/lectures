@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  zookeeper:
+    image: zookeeper:3.8
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+      - "8888:8888"
+    networks:
+      - network1
