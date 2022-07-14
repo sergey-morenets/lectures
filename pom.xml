@@ -64,5 +64,6 @@
         <module>lecture12</module>
         <module>lecture12/lecture12-configserver</module>
         <module>lecture12/lecture12-client</module>
+        <module>lecture13</module>
     </modules>
 </project>
