@@ -1,3 +1,5 @@
+ARG JAR_FILE
+
 FROM maven:3-openjdk-18 as maven
 
 COPY pom.xml /opt/
@@ -12,7 +14,7 @@ RUN mvn install spring-boot:repackage
 
 FROM openjdk:18-alpine
 
-COPY --from=maven /opt/target/lecture3-0.0.1-SNAPSHOT.jar /opt/
+COPY --from=maven /opt/target/${JAR_FILE} /opt/
 
 WORKDIR /opt
 
