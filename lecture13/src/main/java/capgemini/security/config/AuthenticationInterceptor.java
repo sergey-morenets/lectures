@@ -1,7 +1,6 @@
 package capgemini.security.config;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
@@ -33,6 +32,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
 
     private boolean validate(String authHeader) {
+        JwtParser jwtParser = Jwts.parserBuilder().setSigningKey(toSecretKey(key)).build();
+        Jws<Claims> jws = jwtParser.parseClaimsJws(authHeader);
+        String userName = jws.getBody().getSubject();
         return true;
     }
 
