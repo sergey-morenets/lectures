@@ -28,6 +28,16 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>2.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-graphite</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>1.9.0</version>
+        </dependency>
     </dependencies>
 
 </project>

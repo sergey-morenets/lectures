@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
 @EnableScheduling
@@ -18,7 +19,7 @@ public class MetricsConfig {
 
     private Counter booksCounter;
 
-    private int userCount = 1;
+    private AtomicInteger userCount = new AtomicInteger(1);
 
     @PostConstruct
     void init() {
@@ -33,6 +34,7 @@ public class MetricsConfig {
     void updateMetricValues() {
         booksCounter.increment();
 
-        meterRegistry.gauge("users", userCount++);
+        //meterRegistry.gauge("users", userCount);
+        userCount.incrementAndGet();
     }
 }
