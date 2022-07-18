@@ -23,5 +23,4 @@ services:
     ports:
       - "9411:9411"
 
-#management.metrics.export.graphite.step=1s
 #docker cp prometheus.yml :/etc/prometheus/prometheus.yml
