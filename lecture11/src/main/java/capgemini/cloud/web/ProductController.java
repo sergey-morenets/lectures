@@ -5,15 +5,13 @@ import capgemini.cloud.model.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("products")
+@RequestMapping //("products")
 @RequiredArgsConstructor
 @Slf4j
 public class ProductController {
@@ -22,14 +20,24 @@ public class ProductController {
 
     private final CircuitBreakerFactory factory;
 
-    @GetMapping
-    public List<Product> findAll() {
-        return List.of(new Product());
+    /***
+     * Returns all the products (optional) and total amount of products
+     * @return
+     */
+    @GetMapping("products")
+    public ResponseEntity<List<Product>> findAll(@RequestParam(value = "includeItems", required = false)
+                                                 boolean includeItems) {
+        //TODO add response header (total count)
+        return ResponseEntity.ok(List.of(new Product()));
     }
 
     // HTTP method? and maybe other attributes
     // URI ?
 
+    //GET /count
+    //GET /total/number
+    //GET /products/count
+    @GetMapping("count")
     public int getTotalProductCount() {
         return 100;
     }

@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -28,5 +28,15 @@ public class CalculatorTest {
     void plus_twoBigPositiveNumbers_resultIsPositive() {
         long sum = calculator.plus(Integer.MAX_VALUE, Integer.MAX_VALUE);
         assertTrue(sum > 0);
+    }
+
+    @Test
+    void test() {
+        String actual = "test";
+        assertNotNull(actual);
+        assertEquals(4, actual.length());
+        assertTrue(actual.startsWith("te"));
+
+        assertThat(actual).isNotNull().hasSize(4).startsWith("te");
     }
 }
