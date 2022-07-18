@@ -27,6 +27,13 @@ public class ProductController {
         return List.of(new Product());
     }
 
+    // HTTP method? and maybe other attributes
+    // URI ?
+
+    public int getTotalProductCount() {
+        return 100;
+    }
+
     @GetMapping("{id}")
     //@Cacheable(cacheNames = "products")
     //@io.github.resilience4j.retry.annotation.Retry(name = "productService", fallbackMethod = "getProductFromCache")
