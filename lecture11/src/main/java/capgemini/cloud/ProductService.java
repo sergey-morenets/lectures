@@ -15,6 +15,11 @@ public class ProductService {
 
     private final ProductClient productClient;
 
+    public Product save(Product product) {
+        //TODO: saving product
+        return product;
+    }
+
     public Product findById(int id) {
         try {
             return productClient.findById(1);
