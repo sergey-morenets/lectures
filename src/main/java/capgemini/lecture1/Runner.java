@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @FunctionalInterface
 public interface Runner {
@@ -48,6 +49,24 @@ public interface Runner {
         LocalDate tomorrow = localDate.plusDays(1);
         Duration duration = Duration.between(localDate, tomorrow);
         // localDate ?
+        Optional<String> optional = Optional.ofNullable("1");
+
+        Product product = new Product();
+        String name = product.getName().orElse("N/A");
+        String name2 = product.getName().orElseThrow(() -> new RuntimeException("Product name is missing"));
+    }
+}
+
+class Product {
+
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Optional<String> getName() {
+        return Optional.ofNullable(name);
     }
 }
 
