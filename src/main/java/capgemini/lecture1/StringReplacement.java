@@ -9,6 +9,7 @@ public class StringReplacement {
      * ABC -> C
      * ABCD -> CD -> ""
      * CABBAD -> CBAD -> CD -> ""
+     * BC -> BC
      *
      * @param text Contains only A, B, C or D characters
      * @return
