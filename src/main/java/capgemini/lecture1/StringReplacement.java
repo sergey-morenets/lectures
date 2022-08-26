@@ -1,6 +1,9 @@
 package capgemini.lecture1;
 
+import java.util.List;
+
 public class StringReplacement {
+
 
     /**
      * Transforms string by these rules:
@@ -14,7 +17,26 @@ public class StringReplacement {
      * @param text Contains only A, B, C or D characters
      * @return
      */
-    public static String replace(String text) {
-        return null;
+
+    private static final List<String> RULES = List.of("AB", "BA", "CD", "DC");
+
+    // ABCD, ABC
+    // ACDB - incorrect
+    public static String replace(final String text) {
+        if (text == null || text.isEmpty()) {
+            return text;
+        }
+        //TODO add check for [A-D]
+        boolean changed = true;
+        String current = text;
+        while (changed) {
+            int length = current.length();
+            for (String rule : RULES) {
+                current = current.replaceAll(rule, "");
+            }
+            changed = length != current.length();
+        }
+
+        return current;
     }
 }

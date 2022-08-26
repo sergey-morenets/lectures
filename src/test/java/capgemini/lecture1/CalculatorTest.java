@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CalculatorTest {
@@ -29,10 +30,10 @@ class CalculatorTest {
         assertTrue(calculator.sum(Integer.MAX_VALUE, Integer.MAX_VALUE) > 0);
     }
 
-//    @Test
-//    @DisplayName("When we minus two positive numbers we receive expected number")
-//        //Given-When-Then
-//    void minus_twoIntNumbers_expectedNumber() {
-//        assertTrue(calculator.minus(3, 7) == -4);
-//    }
+    @Test
+    @DisplayName("When we subtract big positive number from small positive number we receive expected number")
+        //Given-When-Then
+    void subtract_smallAndBigPositiveNumber_expectedNegativeNumber() {
+        assertEquals(-4, calculator.minus(3, 7));
+    }
 }
