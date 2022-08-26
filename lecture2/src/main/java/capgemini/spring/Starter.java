@@ -11,14 +11,13 @@ public class Starter {
 //        ConsoleLogger consoleLogger2 = new ConsoleLogger();
 
         try (AnnotationConfigApplicationContext applicationContext = new
-                AnnotationConfigApplicationContext("capgemini.spring")) {
+                AnnotationConfigApplicationContext(CustomConfiguration.class)) {
 
             FileLogger fileLogger = applicationContext.getBean(FileLogger.class);
 
         }
 
         Server server = new Server(new ConsoleLogger());
-        server.
 
     }
 
