@@ -14,10 +14,13 @@ public class Starter {
                 AnnotationConfigApplicationContext(CustomConfiguration.class)) {
 
             FileLogger fileLogger = applicationContext.getBean(FileLogger.class);
+            Server server = applicationContext.getBean(Server.class);
+            server.start();
+            server.stop();
 
         }
 
-        Server server = new Server(new ConsoleLogger());
+        //Server server = new Server(new ConsoleLogger());
 
     }
 

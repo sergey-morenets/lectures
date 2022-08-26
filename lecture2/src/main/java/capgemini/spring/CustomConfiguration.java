@@ -3,8 +3,10 @@ package capgemini.spring;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+@PropertySource("application.properties")
 public class CustomConfiguration {
 
     @Bean
@@ -20,7 +22,7 @@ public class CustomConfiguration {
     }
 
     @Bean
-    Server server(@Qualifier("console") Logger logger) {
+    Server server(@Qualifier("file") Logger logger) {
         return new Server(logger);
     }
 
