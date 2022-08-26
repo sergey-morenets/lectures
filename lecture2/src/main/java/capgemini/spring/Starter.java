@@ -17,6 +17,9 @@ public class Starter {
 
         }
 
+        Server server = new Server(new ConsoleLogger());
+        server.
+
     }
 
 }
