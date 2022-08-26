@@ -28,4 +28,11 @@ class CalculatorTest {
     void sum_twoBigPositiveNumbers_positiveNumber() {
         assertTrue(calculator.sum(Integer.MAX_VALUE, Integer.MAX_VALUE) > 0);
     }
+
+//    @Test
+//    @DisplayName("When we minus two positive numbers we receive expected number")
+//        //Given-When-Then
+//    void minus_twoIntNumbers_expectedNumber() {
+//        assertTrue(calculator.minus(3, 7) == -4);
+//    }
 }

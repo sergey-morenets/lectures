@@ -44,5 +44,6 @@
 
     <modules>
         <module>lecture1</module>
+        <module>lecture2</module>
     </modules>
 </project>

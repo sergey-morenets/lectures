@@ -9,5 +9,18 @@ public class Calculator {
         return (long) firstOp + secondOp;
     }
 
+    public long minus(int firstOp, int secondOp) {
+        return (long) firstOp - secondOp;
+    }
+
+    //Correct is divide
+    public double division(int firstOp, int secondOp) {
+        return (double) firstOp / secondOp;
+    }
+
+    //Correct name is multiply
+    public long multip(int firstOp, int secondOp) {
+        return (long) firstOp * secondOp;
+    }
 
 }
