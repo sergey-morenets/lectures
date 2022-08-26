@@ -1,14 +1,18 @@
 package capgemini.spring;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 
 //@Component
 //@RequiredArgsConstructor
+@Getter
 public class Server {
 
     private final Logger logger;
+
+    private boolean started;
 
     // @Autowired
     private Sender sender;
@@ -21,10 +25,13 @@ public class Server {
 
     public void start() {
         logger.write("Server started");
+
+        started = true;
     }
 
     public void stop() {
         logger.write("Server stopped");
+        started = false;
     }
 
     @Autowired
