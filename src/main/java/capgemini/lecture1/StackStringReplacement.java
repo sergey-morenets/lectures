@@ -1,7 +1,7 @@
 package capgemini.lecture1;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class StackStringReplacement implements StringReplacement {
 
@@ -13,7 +13,7 @@ public class StackStringReplacement implements StringReplacement {
             return text;
         }
 
-        Stack<Character> stack = new Stack<>();
+        List<Character> stack = new ArrayList<>();
 
         char prevCh = 0;
 
@@ -24,14 +24,14 @@ public class StackStringReplacement implements StringReplacement {
             for (BuilderStringReplacement.Rule rule : rules) {
                 if (rule.match(ch, prevCh)) {
                     ch = 0;
-                    stack.pop();
-                    prevCh = stack.isEmpty() ? 0 : stack.peek();
+                    stack.remove(stack.size() - 1);
+                    prevCh = stack.isEmpty() ? 0 : stack.get(stack.size() - 1);
                     break;
                 }
             }
 
             if (ch != 0) {
-                stack.push(ch);
+                stack.add(ch);
                 prevCh = ch;
             }
         }

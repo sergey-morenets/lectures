@@ -36,13 +36,16 @@ public class BuilderStringReplacement implements StringReplacement {
     static class ABRule implements Rule {
         private final static String TEXT = "AB";
 
+        private final int SUM = 'A' + 'B';
+
         @Override
         public boolean match(char first, char second) {
-            if (first == second) {
-                return false;
-            }
-            return TEXT.indexOf(first) >= 0 &&
-                    TEXT.indexOf(second) >= 0;
+            return first + second == SUM;
+//            if (first == second) {
+//                return false;
+//            }
+//            return TEXT.indexOf(first) >= 0 &&
+//                    TEXT.indexOf(second) >= 0;
         }
     }
 
