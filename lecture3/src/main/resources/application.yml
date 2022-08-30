@@ -1,2 +1,5 @@
 server:
   port: 9000
+security:
+  secretKey: test2
+  secretToken: test2
