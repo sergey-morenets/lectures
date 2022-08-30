@@ -1,14 +1,22 @@
 package capgemini.spring.boot.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Configuration
+import javax.annotation.PostConstruct;
+
+@Getter
+@RequiredArgsConstructor
+@ToString
 public class SecurityConfiguration {
 
-    @Value("${secretKey}")
-    private String secretKey;
+    private final String secretKey;
 
-    @Value("${secretToken}")
-    private String secretToken;
+    private final String secretToken;
+
+    @PostConstruct
+    void init() {
+        System.out.println("Security configuration: " + toString());
+    }
 }
