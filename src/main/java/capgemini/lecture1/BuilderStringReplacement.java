@@ -15,7 +15,7 @@ public class BuilderStringReplacement implements StringReplacement {
         }
 
         StringBuilder builder = new StringBuilder();
-        StringBuffer buffer = new StringBuffer();
+        //StringBuffer buffer = new StringBuffer();
 
         for (int i = 0; i < text.length(); i++) {
             builder.append(text.charAt(i));
@@ -33,7 +33,7 @@ public class BuilderStringReplacement implements StringReplacement {
         return builder.toString();
     }
 
-    class ABRule implements Rule {
+    static class ABRule implements Rule {
         private final static String TEXT = "AB";
 
         @Override
@@ -47,7 +47,7 @@ public class BuilderStringReplacement implements StringReplacement {
     }
 
     //TODO extract base class
-    class CDRule implements Rule {
+    static class CDRule implements Rule {
         private final static String TEXT = "CD";
 
         @Override
