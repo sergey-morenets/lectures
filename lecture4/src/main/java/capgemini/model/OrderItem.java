@@ -5,13 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Product {
+public class OrderItem {
 
     private int id;
 
-    private String name;
+    private Product product;
 
-    private String description;
-
-    private double price;
+    private int amount;
 }
