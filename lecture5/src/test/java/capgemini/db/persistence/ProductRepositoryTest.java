@@ -31,4 +31,49 @@ class ProductRepositoryTest {
 
     }
 
+    @Test
+    @Commit
+    void findByName_productExists_success() {
+        Product product = new Product();
+        product.setName("Book");
+        product.setPrice(20);
+
+        productRepository.save(product);
+        assertTrue(product.getId() > 0);
+
+        Product product2 = productRepository.findByName(product.getName()).orElseThrow();
+        assertNotNull(product2);
+        assertEquals(product.getId(), product2.getId());
+    }
+
+    @Test
+    @Commit
+    void findByNameAndPrice_productExists_success() {
+        Product product = new Product();
+        product.setName("Book");
+        product.setPrice(20);
+
+        productRepository.save(product);
+        assertTrue(product.getId() > 0);
+
+        Product product2 = productRepository.findByNameAndPrice(product.getName(), product.getPrice()).orElseThrow();
+        assertNotNull(product2);
+        assertEquals(product.getId(), product2.getId());
+    }
+
+    @Test
+    @Commit
+    void search_productExists_success() {
+        Product product = new Product();
+        product.setName("Book");
+        product.setPrice(30);
+
+        productRepository.save(product);
+        assertTrue(product.getId() > 0);
+
+        Product product2 = productRepository.search(product.getName(), product.getPrice()).orElseThrow();
+        assertNotNull(product2);
+        assertEquals(product.getId(), product2.getId());
+    }
+
 }
