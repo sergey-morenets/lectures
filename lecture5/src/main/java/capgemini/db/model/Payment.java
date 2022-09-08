@@ -10,13 +10,20 @@ public class Payment {
 
     private static final String STATE_REJECTED = "rejected";
 
+    private static final String STATE_UNKNOWN = "unknown";
+
     private int id;
 
     private LocalDateTime createdAt;
 
-    private String state;
+    private PaymentState state;
 
     public Payment() {
-        state = STATE_CREATED;
+        //state = "new";
+        state = PaymentState.CREATED;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
