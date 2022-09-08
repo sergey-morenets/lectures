@@ -16,6 +16,7 @@ public class Order {
     @GeneratedValue
     private int id;
 
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @ManyToOne
@@ -23,4 +24,9 @@ public class Order {
     private Product product;
 
     private int amount;
+
+    @PrePersist
+    void onPersist() {
+        createdAt = LocalDateTime.now();
+    }
 }
