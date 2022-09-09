@@ -6,13 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Commit;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
+//@Sql
 class ProductRepositoryTest {
 
     @Autowired
     ProductRepository productRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Test
     @Commit
@@ -24,7 +31,8 @@ class ProductRepositoryTest {
         productRepository.saveAndFlush(product);
         assertTrue(product.getId() > 0);
 
-        //TODO Investigate how to invoke SELECT SQL in this case
+        em.clear();
+
         Product product2 = productRepository.findById(product.getId()).orElseThrow();
         assertNotNull(product2);
         assertEquals(product.getName(), product2.getName());
