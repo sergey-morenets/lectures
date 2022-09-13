@@ -3,6 +3,7 @@ package capgemini.web.controller;
 import capgemini.web.dto.UserDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -14,6 +15,14 @@ import java.util.List;
 public class UserController {
 
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+
+    @GetMapping("{id}")
+    public ResponseEntity<UserDTO> findById(@PathVariable int id) {
+        if (id > 1000) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new UserDTO(id, "Craig", 45));
+    }
 
     @GetMapping
     public List<UserDTO> findAll() {
