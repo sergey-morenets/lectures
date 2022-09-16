@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,13 +16,12 @@ import javax.persistence.Table;
 @Table(name = "`GROUPS`")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Group {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Group extends BaseEntity {
 
     private String name;
+
+    @OneToMany
+    private List<Student> students;
 
 //    private LocalDateTime createdAt;
 //

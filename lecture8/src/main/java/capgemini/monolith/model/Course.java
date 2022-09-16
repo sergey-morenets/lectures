@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -11,11 +13,13 @@ import java.time.LocalDateTime;
 @Setter
 @Table
 @Entity
-public class Course {
-
-    private int id;
+public class Course extends BaseEntity {
 
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "TEACHER_ID")
+    private Teacher teacher;
 
     private LocalDateTime startDate;
 

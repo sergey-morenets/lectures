@@ -8,12 +8,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-@Entity
-@Table
 @Getter
 @Setter
-public class Test extends BaseEntity {
+@Entity
+@Table
+public class Teacher extends BaseEntity {
+
+    private String name;
 
     @OneToMany
-    private List<Question> questions;
+    private List<Course> courses;
 }
