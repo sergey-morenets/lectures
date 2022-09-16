@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "PRODUCTS", indexes = @Index(name = "indProduct_name_price", columnList = "name,price"))
+@Table(name = "PRODUCTS", indexes = @Index(name = "indProduct_name_price", columnList = "PRODUCT_NAME,price"))
 public class Product {
 
     @Id

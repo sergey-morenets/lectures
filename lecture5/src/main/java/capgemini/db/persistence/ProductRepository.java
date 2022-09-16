@@ -14,5 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     Optional<Product> findByNameAndPrice(String name, double price);
 
     @Query("SELECT p FROM Product p WHERE p.name=:name and p.price=:price")
+    //@Query(value = "SELECT p FROM PRODUCTS p WHERE p.PRODUCT_NAME=:name and p.price=:price", nativeQuery = true)
     Optional<Product> search(@Param("name") String name, @Param("price") double price);
 }
