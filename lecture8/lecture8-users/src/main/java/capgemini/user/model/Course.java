@@ -1,5 +1,6 @@
-package capgemini.monolith.model;
+package capgemini.user.model;
 
+import capgemini.common.model.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
