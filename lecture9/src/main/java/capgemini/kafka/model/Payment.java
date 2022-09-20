@@ -12,4 +12,6 @@ public class Payment {
     private PaymentStatus status;
 
     private String errorMessage;
+
+    private Order order;
 }
