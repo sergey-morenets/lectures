@@ -32,6 +32,11 @@
             <version>3.1.0</version>
         </dependency>
         <dependency>
+            <groupId>capgemini</groupId>
+            <artifactId>lecture8-users-client-library</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>

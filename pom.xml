@@ -61,5 +61,7 @@
         <module>lecture8/lecture8-users</module>
         <module>lecture8/lecture8-test</module>
         <module>lecture8/lecture8-common</module>
+        <module>lecture9</module>
+        <module>lecture8-users-client-library</module>
     </modules>
 </project>
