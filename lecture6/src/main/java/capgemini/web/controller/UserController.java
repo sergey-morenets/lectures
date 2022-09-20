@@ -1,6 +1,7 @@
 package capgemini.web.controller;
 
 import capgemini.web.dto.UserDTO;
+import capgemini.web.model.User;
 import capgemini.web.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +24,19 @@ public class UserController {
 
     private final UserService userService;
 
+//    @GetMapping("{id}")
+//    public ResponseEntity<UserDTO> findById(@PathVariable int id) {
+//        User user = userService.findById(id);
+//        if (user == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(new UserDTO(id, user.getUsername(), 45));
+//    }
+
     @GetMapping("{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable int id) {
-        if (id > 1000) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(new UserDTO(id, "Craig", 45));
+    public UserDTO findById(@PathVariable int id) {
+        User user = userService.findById(id);
+        return new UserDTO(id, user.getUsername(), 45);
     }
 
     @GetMapping
