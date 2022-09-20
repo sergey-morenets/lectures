@@ -9,7 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "PRODUCTS", indexes = @Index(name = "indProduct_name_price", columnList = "PRODUCT_NAME,price"))
+@Table(name = "PRODUCTS", indexes = {@Index(name = "indProducts_NAME", columnList = "PRODUCT_NAME"),
+        @Index(name = "indProducts_price", columnList = "price"), @Index(name = "indProducts_category", columnList = "category")})
 public class Product {
 
     @Id
@@ -20,6 +21,8 @@ public class Product {
     private String name;
 
     private double price;
+
+    private String category;
 
     @OneToMany(mappedBy = "product")
     private List<Order> orders;
