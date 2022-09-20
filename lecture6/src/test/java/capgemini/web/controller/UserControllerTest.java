@@ -1,6 +1,7 @@
 package capgemini.web.controller;
 
 import capgemini.web.dto.UserDTO;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
@@ -28,6 +29,7 @@ class UserControllerTest {
     JacksonTester<UserDTO> jacksonTester;
 
     @Test
+    @DisplayName("GET /users returns existing users")
     void findAll_dataStoreNotEmpty_success() throws Exception {
         ResultActions actions = mockMvc.perform(get("/users"));
         actions.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON))
