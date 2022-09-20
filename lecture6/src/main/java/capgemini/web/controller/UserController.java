@@ -1,20 +1,27 @@
 package capgemini.web.controller;
 
 import capgemini.web.dto.UserDTO;
+import capgemini.web.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
 @RequestMapping("users")
+@RequiredArgsConstructor
 // GET /
 public class UserController {
 
     private final ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+
+    private final UserService userService;
 
     @GetMapping("{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable int id) {
@@ -31,9 +38,12 @@ public class UserController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void register(@Valid @RequestBody UserDTO user) {
+    public ResponseEntity<Void> register(@Valid @RequestBody UserDTO user) throws URISyntaxException {
+        if (userService.findByUsername(user.getUsername())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
         System.out.println("Success! " + user.getUsername());
+        return ResponseEntity.created(new URI("")).build();
     }
 
     @PutMapping("{id}")
