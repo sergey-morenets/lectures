@@ -3,10 +3,7 @@ package capgemini.db.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,4 +14,8 @@ public class Account {
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 }

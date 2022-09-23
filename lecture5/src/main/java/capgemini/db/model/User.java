@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @OneToMany
-    @JoinColumn(name = "USER_ID")
+    @OneToMany(mappedBy = "user")
+    //@JoinColumn(name = "USER_ID")
     private List<Account> accounts;
 }
