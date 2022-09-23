@@ -20,5 +20,9 @@ public class Rating {
 
     private int rating;
 
-    private String bookName;
+    //private String bookName;
+
+    //private int bookId;
+
+    //private Book book;
 }
