@@ -63,5 +63,6 @@
         <module>lecture8/lecture8-common</module>
         <module>lecture9</module>
         <module>lecture8-users-client-library</module>
+        <module>lecture10</module>
     </modules>
 </project>

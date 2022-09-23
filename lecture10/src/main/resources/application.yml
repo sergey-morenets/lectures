@@ -1,0 +1,19 @@
+server:
+  port: 8050
+spring:
+  kafka:
+    producer:
+      bootstrap-servers:
+        - localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      properties:
+        spring.json.trusted.packages: "*"
+      bootstrap-servers:
+        - localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      group-id: app
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
