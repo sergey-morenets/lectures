@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.3</version>
+        <version>2.6.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -61,8 +61,21 @@
         <module>lecture8/lecture8-users</module>
         <module>lecture8/lecture8-test</module>
         <module>lecture8/lecture8-common</module>
+        <module>lecture8-eureka</module>
         <module>lecture9</module>
         <module>lecture8-users-client-library</module>
         <module>lecture10</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2021.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
