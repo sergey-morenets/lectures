@@ -13,4 +13,7 @@ public class CountryService {
     public Country findById(int id) {
         return countryStorage.findById(id);
     }
+
+    public void save(Country country) {
+    }
 }
