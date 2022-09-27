@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 
 @Getter
@@ -16,6 +17,7 @@ public class Student extends BaseEntity {
 
     private String name;
 
+    @Transient
     private List<Integer> exams;
 
 }
