@@ -18,4 +18,10 @@ public class ShoppingCartController {
     public void create(@RequestBody ShoppingCart shoppingCart) {
         shoppingCartRepository.save(shoppingCart);
     }
+
+
+    @PostMapping("{cartId}/items")
+    public void addCartItem(@PathVariable int cartId) {
+
+    }
 }
