@@ -1,5 +1,6 @@
 package capgemini.nosql.redis.web;
 
+import capgemini.nosql.redis.dto.CartItemDTO;
 import capgemini.nosql.redis.model.ShoppingCart;
 import capgemini.nosql.redis.persistence.ShoppingCartRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class ShoppingCartController {
 
 
     @PostMapping("{cartId}/items")
-    public void addCartItem(@PathVariable int cartId) {
+    public void addCartItem(@PathVariable int cartId, @RequestBody CartItemDTO cartItemDTO) {
 
     }
 }
