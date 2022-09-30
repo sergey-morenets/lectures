@@ -66,6 +66,7 @@
         <module>lecture8-users-client-library</module>
         <module>lecture10</module>
         <module>lecture12</module>
+        <module>lecture12-config-server</module>
     </modules>
 
     <dependencyManagement>
