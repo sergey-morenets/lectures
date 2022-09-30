@@ -13,6 +13,14 @@ public class DatabaseCreator {
 
     public void run() {
         //Read-only state
+        createAdministrator();
+        createProducts();
+    }
+
+    private void createAdministrator() {
+    }
+
+    private void createProducts() {
         Product product = new Product();
         product.setName("Car");
         product.setPrice(1000d);
