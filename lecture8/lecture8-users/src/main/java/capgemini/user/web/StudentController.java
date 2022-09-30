@@ -12,6 +12,6 @@ public class StudentController {
 
     @GetMapping("{id}")
     public StudentDTO findById(@PathVariable int id) {
-        return new StudentDTO();
+        return new StudentDTO(1, "John");
     }
 }

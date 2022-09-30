@@ -18,7 +18,7 @@ public class ExamService {
 
     private final RestTemplate restTemplate;
 
-    private String getStudentName(int studentId) throws Exception {
+    public String getStudentName(int studentId) {
 //        int maxAttempts = 3;
 //        while (maxAttempts > 0) {
 //            try {
