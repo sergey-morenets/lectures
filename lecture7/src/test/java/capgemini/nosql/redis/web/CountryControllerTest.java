@@ -39,7 +39,7 @@ class CountryControllerTest {
     @Disabled("Disabled because it suddenly fails. TODO fix it later")
     void findById_IdValid_success() throws Exception {
         int countryId = 10;
-        BDDMockito.given(countryService.findById(countryId)).willReturn(new Country(countryId, "Ukraine"));
+        BDDMockito.given(countryService.findById(countryId)).willReturn(new Country(countryId, "Ukraine", "UA"));
 
         ResultActions actions = mockMvc.perform(get("/countries/" + countryId));
         actions.andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON))
