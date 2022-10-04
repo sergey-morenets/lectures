@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients("capgemini.user.api")
+//@ComponentScan("capgemini.user.api")
 public class TestApplication {
 
     public static void main(String[] args) {
