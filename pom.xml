@@ -68,6 +68,7 @@
         <module>lecture12</module>
         <module>lecture12-config-server</module>
         <module>lecture13</module>
+        <module>lecture14</module>
     </modules>
 
     <dependencyManagement>

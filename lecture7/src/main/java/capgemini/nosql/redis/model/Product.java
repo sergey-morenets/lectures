@@ -1,4 +1,4 @@
 package capgemini.nosql.redis.model;
 
-public class Product {
+public class Product extends BaseEntity {
 }

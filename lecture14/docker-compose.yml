@@ -1,0 +1,26 @@
+﻿version: '3.8'
+services:
+  graphite:
+    image: graphiteapp/graphite-statsd
+    ports:
+      - 80:80
+      - 2003:2003
+      - 2004:2004
+      - 8125:8125
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+
+#docker cp prometheus.yml :/etc/prometheus/prometheus.yml

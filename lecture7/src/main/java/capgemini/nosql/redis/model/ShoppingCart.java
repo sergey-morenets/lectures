@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @RedisHash("carts")
-public class ShoppingCart {
+public class ShoppingCart extends BaseEntity {
 
     @Id
     private int id;
