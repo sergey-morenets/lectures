@@ -4,11 +4,11 @@ COPY pom.xml /opt/pom.xml
 
 WORKDIR /opt
 
-RUN mvn dependency:resolve
+RUN --mount=type=cache,target=~/.m2/repository mvn dependency:resolve
 
 COPY . /opt/
 
-RUN mvn package spring-boot:repackage
+RUN --mount=type=cache,target=~/.m2/repository mvn package spring-boot:repackage
 
 FROM openjdk:18-alpine
 
